@@ -64,8 +64,7 @@ function App({ tag }: Props) {
         />
 
         {isSuccess && totalPages > 1 && (
-          <Pagination totalPages={totalPages}
-  currentPage={page} onPageChange={setPage} />
+          <Pagination totalPages={totalPages} page={page} setPage={setPage} />
         )}
 
         <button className={css.button} onClick={openModal}>
