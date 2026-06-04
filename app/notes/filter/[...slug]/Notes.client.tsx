@@ -6,7 +6,7 @@ import Pagination from '../../../../components/Pagination/Pagination';
 import SearchBox from '../../../../components/SearchBox/SearchBox';
 import Modal from '../../../../components/Modal/Modal';
 import NoteForm from '../../../../components/NoteForm/NoteForm';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { fetchNotes } from '../../../../lib/api';
 import NoteList from '../../../../components/NoteList/NoteList';
 import { useDebouncedCallback } from 'use-debounce';
@@ -22,7 +22,7 @@ function App({ tag }: Props) {
   const [querySe, setQuery] = useState('');
   const [page, setPage] = useState(1);
 
-  const { data, isLoading, isError, isSuccess, isFetching } = useQuery({
+  const { data, isLoading, isSuccess, isFetching } = useQuery({
     queryKey: ['notes', { page, querySe, tag }],
     queryFn: () =>
       fetchNotes({
@@ -64,7 +64,7 @@ function App({ tag }: Props) {
         />
 
         {isSuccess && totalPages > 1 && (
-          <Pagination totalPages={totalPages} page={page} setPage={setPage} />
+          <Pagination totalPages={totalPages} currentPage={page} onPageChange={setPage} />
         )}
 
         <button className={css.button} onClick={openModal}>
