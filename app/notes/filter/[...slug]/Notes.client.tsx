@@ -4,8 +4,7 @@ import { useQuery, keepPreviousData } from '@tanstack/react-query';
 import css from './Notes.module.css';
 import Pagination from '../../../../components/Pagination/Pagination';
 import SearchBox from '../../../../components/SearchBox/SearchBox';
-import Modal from '../../../../components/Modal/Modal';
-import NoteForm from '../../../../components/NoteForm/NoteForm';
+
 import { useState } from 'react';
 import { fetchNotes } from '../../../../lib/api';
 import NoteList from '../../../../components/NoteList/NoteList';
@@ -18,7 +17,6 @@ type Props = {
   tag?: NoteTag;
 };
 function App({ tag }: Props) {
-  const [createNoteThis, setCreateNoteThis] = useState(false);
   const [input, setInput] = useState('');
   const [querySe, setQuery] = useState('');
   const [page, setPage] = useState(1);
@@ -39,13 +37,9 @@ function App({ tag }: Props) {
     setQuery(value);
   }, 500);
 
-  const openModal = () => {
-    setCreateNoteThis(true);
-  };
+  
 
-  const closeModal = () => {
-    setCreateNoteThis(false);
-  };
+
 
   const totalPages = data?.totalPages ?? 0;
   const notes = data?.notes ?? [];
