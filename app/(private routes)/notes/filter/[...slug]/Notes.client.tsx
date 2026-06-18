@@ -2,12 +2,12 @@
 import 'modern-normalize';
 import { useQuery, keepPreviousData } from '@tanstack/react-query';
 import css from './Notes.module.css';
-import Pagination from '../../../../components/Pagination/Pagination';
-import SearchBox from '../../../../components/SearchBox/SearchBox';
+import Pagination from '../../../../../components/Pagination/Pagination';
+import SearchBox from '../../../../../components/SearchBox/SearchBox';
 
 import { useState } from 'react';
-import { fetchNotes } from '../../../../lib/api';
-import NoteList from '../../../../components/NoteList/NoteList';
+import { fetchNotes } from '@/lib/api/clientApi';
+import NoteList from '../../../../../components/NoteList/NoteList';
 import { useDebouncedCallback } from 'use-debounce';
 import { Toaster } from 'react-hot-toast';
 import { NoteTag } from '@/types/note';
