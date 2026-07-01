@@ -12,6 +12,9 @@ interface NotesResponse {
   notes: Note[];
   totalPages: number;
 }
+interface CheckSessionResponse {
+  message: string;
+}
 export type CreateNoteDto = {
   title: string;
   content: string;
@@ -70,9 +73,9 @@ export const login = async (loginData: RegisterRequest): Promise<User> => {
 export const logout = async (): Promise<void> => {
   await api.post('/auth/logout');
 };
-export const checkSession = async (): Promise<User> => {
-  const { data } = await api.get<User>('/auth/session');
-  return data;
+export const checkSession = async (): Promise<CheckSessionResponse> => {
+  const { data } = await api.get('/auth/session');
+  return data.success;
 };
 export const getMe = async (): Promise<User> => {
   const { data } = await api.get<User>('/users/me');
